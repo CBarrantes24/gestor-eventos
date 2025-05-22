@@ -1,0 +1,55 @@
+<div class="perfil-page">
+  <div class="perfil-container" *ngIf="usuario; else noUsuarioInfo">
+    <!-- Sección de información del usuario -->
+    <div class="perfil-header">
+      <div class="perfil-avatar-container">
+        <div class="perfil-avatar">
+          <span>{{ usuario.nombre ? usuario.nombre.charAt(0).toUpperCase() : '?' }}</span>
+        </div>
+      </div>
+      <div class="perfil-info">
+        <h1 class="perfil-nombre">{{ usuario.nombre }}</h1>
+        <p class="perfil-email">{{ usuario.email }}</p>
+        <div class="perfil-detalles">
+          <div class="perfil-detalle" *ngIf="usuario.identificacion">
+            <span class="detalle-label">Identificación:</span>
+            <span class="detalle-valor">{{ usuario.identificacion }}</span>
+          </div>
+          <div class="perfil-detalle" *ngIf="usuario.rol">
+            <span class="detalle-label">Rol:</span>
+            <span class="detalle-valor">{{ usuario.rol }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de eventos registrados -->
+    <div class="perfil-eventos">
+      <h2 class="eventos-titulo">Mis Eventos Registrados</h2>
+
+      <div *ngIf="loadingEventos" class="eventos-loading">
+        <div class="spinner"></div>
+        <p>Cargando tus eventos...</p>
+      </div>
+
+      <div *ngIf="!loadingEventos && eventosRegistrados.length === 0" class="eventos-vacio">
+        <p>No estás registrado en ningún evento actualmente.</p>
+      </div>
+
+      <div *ngIf="!loadingEventos && eventosRegistrados.length > 0" class="eventos-grid">
+        <app-evento-card
+          *ngFor="let evento of eventosRegistrados"
+          [evento]="evento"
+          [mostrarDetalle]="true"
+          class="evento-card-item">
+        </app-evento-card>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noUsuarioInfo>
+    <div class="no-usuario">
+      <p>No hay información de usuario disponible.</p>
+    </div>
+  </ng-template>
+</div>

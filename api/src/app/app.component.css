@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.dashboard-footer {
+  background-color: #f5f5f5;
+  padding: 16px;
+  text-align: center;
+  color: #757575;
+  font-size: 0.9rem;
+  margin-top: auto;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+/* Aseguramos que el contenido principal tenga espacio para el footer */
+.main-content {
+  min-height: calc(100vh - 120px); /* Ajusta según la altura de tu navbar y footer */
+  padding-bottom: 20px;
+}

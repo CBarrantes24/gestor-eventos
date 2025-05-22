@@ -1,0 +1,95 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="evento-form">
+  <h2>{{ modoEdicion ? 'Editar Evento' : 'Crear Nuevo Evento' }}</h2>
+
+  <app-input
+    label="Título"
+    formControlName="title"
+    [required]="true"
+    [showError]="(formulario.get('title')?.invalid && formulario.get('title')?.touched) ?? false"
+    errorMessage="El título es obligatorio y debe tener máximo 100 caracteres"
+  ></app-input>
+
+  <app-input
+    label="Fecha"
+    type="date"
+    formControlName="date"
+    [required]="true"
+    [min]="minDate"
+    [showError]="(formulario.get('date')?.invalid && formulario.get('date')?.touched) ?? false "
+    errorMessage="La fecha es obligatoria y no puede ser anterior a hoy"
+  ></app-input>
+
+  <app-input
+    label="Hora de inicio"
+    type="time"
+    formControlName="start_time"
+    [required]="true"
+    [min]="minStartTime"
+    [showError]="(formulario.get('start_time')?.invalid && formulario.get('start_time')?.touched)?? false"
+    errorMessage="La hora de inicio es obligatoria y debe ser mayor a la hora actual"
+  ></app-input>
+
+  <app-input
+    label="Hora de finalización"
+    type="time"
+    formControlName="end_time"
+    [required]="true"
+    [showError]="(formulario.get('end_time')?.invalid && formulario.get('end_time')?.touched) ?? false"
+    errorMessage="La hora de finalización debe ser mayor a la hora de inicio"
+  ></app-input>
+
+  <app-input
+    label="Ubicación"
+    formControlName="ubicacion"
+    [required]="true"
+    [showError]="(formulario.get('ubicacion')?.invalid && formulario.get('ubicacion')?.touched) ?? false"
+    errorMessage="La ubicación es obligatoria y debe tener máximo 200 caracteres"
+  ></app-input>
+
+  <app-input
+    label="Organizador"
+    formControlName="organizer"
+    [required]="true"
+    [showError]="(formulario.get('organizer')?.invalid && formulario.get('organizer')?.touched) ?? false"
+    errorMessage="El organizador es obligatorio"
+  ></app-input>
+
+  <app-input
+    label="Capacidad"
+    type="number"
+    formControlName="capacity"
+    [showError]="(formulario.get('capacity')?.invalid && formulario.get('capacity')?.touched) ?? false"
+    errorMessage="La capacidad debe ser un número entre 1 y 10000"
+  ></app-input>
+
+  <app-input
+    label="Descripción"
+    type="textarea"
+    formControlName="description"
+    [required]="true"
+    [showError]="(formulario.get('description')?.invalid && formulario.get('description')?.touched) ?? false"
+    errorMessage="La descripción es obligatoria y debe tener máximo 1000 caracteres"
+  ></app-input>
+
+  <app-input
+    label="URL de la imagen"
+    formControlName="imagen"
+    [showError]="false"
+  ></app-input>
+
+  <div class="form-actions">
+    <app-button
+      label="Cancelar"
+      type="button"
+      (click)="onCancelar()"
+    ></app-button>
+
+    <app-button
+      [label]="modoEdicion ? 'Actualizar' : 'Crear'"
+      type="submit"
+      [loading]="loading"
+      [disabled]="formulario.invalid"
+    ></app-button>
+  </div>
+</form>
+<p>formulario-evento works!</p>

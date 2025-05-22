@@ -1,0 +1,28 @@
+<div class="input-container">
+  <label *ngIf="label" [for]="id" class="input-label">
+    {{ label }}
+    <span *ngIf="required" class="required-mark">*</span>
+  </label>
+  <input
+    [type]="type"
+    [attr.type]="type"
+
+    [id]="id"
+    [name]="name"
+    [placeholder]="placeholder"
+    [required]="required"
+    [disabled]="disabled"
+    [maxlength]="maxLength ?? null"
+    [minlength]="minLength ?? null"
+    [attr.min]="min"
+    [(ngModel)]="value"
+    (input)="onInputChange($event)"
+    (blur)="onBlur()"
+    class="input-field"
+    [ngClass]="{'input-error': showError}"
+  />
+  <div *ngIf="showError && errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>
+<!-- <p>input works!</p> -->

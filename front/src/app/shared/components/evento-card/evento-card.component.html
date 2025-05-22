@@ -1,0 +1,41 @@
+<div class="evento-card" [ngClass]="getEstadoClase()">
+  <div class="evento-estado-indicador"></div>
+  <div class="evento-card-header">
+    <img *ngIf="evento.imagen" [src]="evento.imagen" alt="{{ evento.title }}" class="evento-imagen">
+    <div class="evento-titulo-container">
+      <h3 class="evento-titulo">{{ evento.title }}</h3>
+      <span class="evento-estado">{{ evento.status }}</span>
+    </div>
+  </div>
+  <div class="evento-card-body">
+    <div class="evento-info">
+      <div class="evento-fecha">
+        <span class="label">Fecha:</span>
+        <span>{{ evento.date | date:'dd/MM/yyyy' }} {{ evento.start_time }}</span>
+      </div>
+      <div class="evento-ubicacion">
+        <span class="label">Ubicación:</span>
+        <span>{{ evento.ubicacion }}</span>
+      </div>
+      <div *ngIf="mostrarDetalle" class="evento-descripcion">
+        <p>{{ evento.description }}</p>
+      </div>
+      <div *ngIf="evento.capacity && mostrarDetalle" class="evento-capacidad">
+        <span class="label">Capacidad:</span>
+        <span>{{ evento.asistentes || 0 }}/{{ evento.capacity }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="mostrarAcciones" class="evento-card-actions">
+    <button class="action-button edit-button" title="Editar evento" (click)="onEditar()">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button class="action-button delete-button" title="Eliminar evento" (click)="onEliminar()">
+      <i class="fas fa-trash-alt"></i>
+    </button>
+    <button class="action-button register-button" title="Registrarse al evento" (click)="onRegistrar()">
+      <i class="fas fa-user-plus"></i>
+    </button>
+  </div>
+</div>
+<!-- <p>evento-card works!</p> -->

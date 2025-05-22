@@ -1,0 +1,19 @@
+<button
+  [type]="type"
+  [disabled]="disabled || loading"
+  [ngClass]="[
+    'btn',
+    'btn-' + variant,
+    'btn-' + size,
+    fullWidth ? 'btn-full-width' : '',
+    loading ? 'btn-loading' : ''
+  ]"
+  (click)="onClick($event)"
+>
+  <span *ngIf="loading" class="spinner"></span>
+  <span *ngIf="icon && !loading" class="btn-icon">
+    <i class="material-icons">{{ icon }}</i>
+  </span>
+  <span class="btn-label">{{ label }}</span>
+</button>
+<!-- <p>button works!</p> -->

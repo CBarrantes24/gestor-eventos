@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="navbar-logo">
+    <a routerLink="/dashboard">Eventos</a>
+  </div>
+  <div class="navbar-user" (click)="toggleDropdown()" tabindex="0">
+    <div class="user-avatar">
+      <span>{{ usuario?.nombre ? usuario.nombre.charAt(0).toUpperCase() : 'U' }}</span>
+    </div>
+    <span class="user-name">{{ usuario?.nombre || 'Usuario' }}</span>
+    <span class="arrow">&#9662;</span>
+    <div class="dropdown-menu" *ngIf="mostrarDropdown">
+      <a (click)="irAPerfil()">Mi Perfil</a>
+      <a (click)="cerrarSesion()">Cerrar sesión</a>
+    </div>
+  </div>
+</nav>

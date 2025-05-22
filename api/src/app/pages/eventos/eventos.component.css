@@ -1,0 +1,26 @@
+.eventos-container {
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eventos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .eventos-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .eventos-container {
+    padding: 10px;
+  }
+}

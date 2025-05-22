@@ -1,0 +1,114 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1 class="auth-title">Mis Eventos</h1>
+      <p class="auth-subtitle">Gestión de eventos profesionales</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button
+        class="auth-tab"
+        [ngClass]="{'active': isLoginView}"
+        (click)="isLoginView = true">
+        Iniciar Sesión
+      </button>
+      <button
+        class="auth-tab"
+        [ngClass]="{'active': !isLoginView}"
+        (click)="isLoginView = false">
+        Registrarse
+      </button>
+    </div>
+
+    <div *ngIf="errorMessage" class="auth-message" [ngClass]="{'error': errorMessage.includes('error')}">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Formulario de Login -->
+    <form *ngIf="isLoginView" [formGroup]="loginForm" (ngSubmit)="onLogin()" class="auth-form">
+      <app-input
+        label="Correo Electrónico"
+        type="email"
+        formControlName="email"
+        [required]="true"
+        [showError]="(loginForm.get('email')?.invalid && loginForm.get('email')?.touched) ?? false"
+        errorMessage="Ingresa un correo electrónico válido"
+      ></app-input>
+
+      <app-input
+        label="Contraseña"
+        type="password"
+        formControlName="password"
+        [required]="true"
+        [showError]="(loginForm.get('password')?.invalid && loginForm.get('password')?.touched) ?? false"
+        errorMessage="La contraseña debe tener al menos 6 caracteres"
+      ></app-input>
+
+      <div class="auth-actions">
+        <app-button
+          label="Iniciar Sesión"
+          type="submit"
+          [loading]="loading"
+          [disabled]="loginForm.invalid"
+          [fullWidth]="true"
+        ></app-button>
+      </div>
+    </form>
+
+    <!-- Formulario de Registro -->
+    <form *ngIf="!isLoginView" [formGroup]="registerForm" (ngSubmit)="onRegister()" class="auth-form">
+      <app-input
+      label="Identificación"
+      formControlName="identificacion"
+      [required]="true"
+      [showError]="(registerForm.get('identificacion')?.invalid && registerForm.get('identificacion')?.touched)?? false"
+      errorMessage="La identificacion es obligatorio"
+    ></app-input>
+
+      <app-input
+        label="Nombre Completo"
+        formControlName="nombre"
+        [required]="true"
+        [showError]="(registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched)?? false"
+        errorMessage="El nombre es obligatorio"
+      ></app-input>
+
+      <app-input
+        label="Correo Electrónico"
+        type="email"
+        formControlName="email"
+        [required]="true"
+        [showError]="(registerForm.get('email')?.invalid && registerForm.get('email')?.touched) ?? false"
+        errorMessage="Ingresa un correo electrónico válido"
+      ></app-input>
+
+      <app-input
+        label="Contraseña"
+        type="password"
+        formControlName="password"
+        [required]="true"
+        [showError]="(registerForm.get('password')?.invalid && registerForm.get('password')?.touched) ?? false  "
+        errorMessage="La contraseña debe tener al menos 6 caracteres"
+      ></app-input>
+
+      <app-input
+        label="Confirmar Contraseña"
+        type="password"
+        formControlName="confirmPassword"
+        [required]="true"
+        [showError]="((registerForm.get('confirmPassword')?.invalid || registerForm.hasError('notSame')) && registerForm.get('confirmPassword')?.touched) ?? false"
+        errorMessage="Las contraseñas no coinciden"
+      ></app-input>
+
+      <div class="auth-actions">
+        <app-button
+          label="Registrarse"
+          type="submit"
+          [loading]="loading"
+          [disabled]="registerForm.invalid"
+          [fullWidth]="true"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</div>

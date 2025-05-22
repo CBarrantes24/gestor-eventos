@@ -1,0 +1,186 @@
+.evento-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9; /* Fondo gris claro más tenue */
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  border-left: 4px solid #ccc;
+}
+
+.evento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.evento-card-header {
+  position: relative;
+  background-color: white; /* Mantener el encabezado blanco para contraste */
+}
+
+.evento-imagen {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.evento-titulo-container {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.evento-titulo {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.evento-estado {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background-color: #f0f0f0;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.evento-card-body {
+  padding: 0 16px 16px;
+  flex: 1;
+}
+
+.evento-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.evento-fecha, .evento-ubicacion, .evento-capacidad {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.label {
+  font-weight: 600;
+  color: #555;
+}
+
+.evento-descripcion {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.evento-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: rgba(0, 0, 0, 0.02); /* Fondo ligeramente más oscuro para la sección de acciones */
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para los botones de acción con iconos */
+.action-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.edit-button {
+  background-color: #2196F3;
+}
+
+.edit-button:hover {
+  background-color: #1976D2;
+}
+
+.delete-button {
+  background-color: #F44336;
+}
+
+.delete-button:hover {
+  background-color: #D32F2F;
+}
+
+.register-button {
+  background-color: #4CAF50;
+}
+
+.register-button:hover {
+  background-color: #388E3C;
+}
+
+/* Estilos para los indicadores de estado */
+.estado-programado {
+  border-left-color: #4CAF50;
+}
+
+.estado-en-curso {
+  border-left-color: #2196F3;
+}
+
+.estado-finalizado {
+  border-left-color: #9E9E9E;
+}
+
+.estado-cancelado {
+  border-left-color: #F44336;
+}
+
+.estado-desconocido {
+  border-left-color: #FF9800;
+}
+
+.evento-estado-indicador {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: inherit;
+}
+
+/* Estilos para los estados */
+.estado-programado .evento-estado {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+}
+
+.estado-en-curso .evento-estado {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #2196F3;
+}
+
+.estado-finalizado .evento-estado {
+  background-color: rgba(158, 158, 158, 0.1);
+  color: #9E9E9E;
+}
+
+.estado-cancelado .evento-estado {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #F44336;
+}
+
+.estado-desconocido .evento-estado {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: #FF9800;
+}
