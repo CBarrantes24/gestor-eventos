@@ -1,4 +1,17 @@
-# EventosFront
+# Frontend - Gestor de Eventos
+
+## Descripción
+Este proyecto es una aplicación web para la gestión de eventos desarrollada con Angular. Proporciona una interfaz de usuario intuitiva para la gestión y organización de eventos.
+
+## Tecnologías Utilizadas
+- Angular 16+
+- TypeScript
+- SCSS para estilos
+- NgRx para gestión de estado
+- Angular Material para componentes UI
+- Docker para contenerización
+
+## Estructura del Proyecto
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
 
